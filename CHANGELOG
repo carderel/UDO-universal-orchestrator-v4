@@ -1,0 +1,108 @@
+# UDO Changelog
+
+## v4.3.1 (2025-01-08)
+### Auto-Checkpoints
+- **Automatic checkpoint triggers** - Configurable in PROJECT_STATE.json
+  - After every N todos completed (default: 3)
+  - When a phase completes
+  - At session end
+  - Before risky operations
+- **Checkpoint hygiene** - Auto-cleanup keeps last 10, option to preserve specific checkpoints
+- **New commands**: `List checkpoints`, `Keep checkpoint`, `Disable/Enable auto-checkpoints`, `Set auto-checkpoint interval`
+- **Oversight report** now shows checkpoint status and todos since last checkpoint
+
+## v4.3.0 (2025-01-08)
+### Major Features: Robustness & Safety
+
+#### Circuit Breakers (C2)
+- Automatic halt on 3x task failure
+- Confidence thresholds (flag if < 40%)
+- Error rate monitoring (> 30% triggers pause)
+- Circular handoff detection
+- Conflict detection between validated outputs
+- Context usage monitoring (> 80% triggers archive)
+
+#### Arbiter Protocol (C1)
+- Deterministic conflict resolution hierarchy
+- Canonical memory wins over working memory
+- Validation rules as tiebreaker
+- Recency and confidence as secondary factors
+- Human override with audit logging
+
+#### Memory Discipline (C5)
+- `.memory/working/` - Session scratch (cleared each session)
+- `.memory/canonical/` - Verified permanent facts
+- `.memory/disposable/` - Speculation (cleared on resolution)
+- Clear rules for what goes where
+- Templates for canonical facts
+
+#### Human Oversight UX (C6)
+- `OVERSIGHT_DASHBOARD.md` - Quick health checks
+- Oversight report command
+- Warning signs guide (yellow/red flags)
+- Intervention commands documented
+- Cognitive load reducers
+
+#### Non-Goals (C7)
+- `NON_GOALS.md` - Explicit scope boundaries
+- What UDO is NOT (8 items)
+- When to use something else
+- Scope creep warning signs
+
+#### Context Janitor (G1)
+- Archive Protocol for completed phases
+- 3-sentence summary compression
+- `.project-catalog/archive/` for full details
+- Automatic trigger at 60%+ context usage
+- Templates for archive summaries
+
+#### Environment Awareness (G2)
+- `CAPABILITIES.json` - Define LLM/environment tools
+- Agents check capabilities before executing
+- Adapts approach based on available tools
+- Prevents failures from missing capabilities
+
+#### Active Template Evolution (G3)
+- Lessons learned auto-update agent templates
+- `## Learned Rules` section in templates
+- Template evolution logged in sessions
+- Self-optimizing agent definitions
+
+### Other Improvements
+- Agents now report confidence levels
+- Session template includes oversight report
+- Error template includes circuit breaker status
+- Enhanced PROJECT_STATE.json with circuit_breaker and context_health
+- All rules updated to require confidence statements
+
+## v4.2.0 (2025-01-08)
+### Features
+- START_HERE.md - Quick onboarding
+- LESSONS_LEARNED.md - Persistent learning
+- PROJECT_META.json - Project context
+- .inputs/ + manifest.json - Asset management
+- .outputs/_drafts/ - Standardized deliverables
+- .checkpoints/ - Snapshot system
+- .rules/ - Quality standards (code, content, data)
+- .project-catalog/errors/ - Error logging
+
+### Protocols
+- Resume Protocol
+- Collaboration Protocol
+- Checkpoint Protocol
+- Teaching Protocol
+
+## v4.1.0 (2025-01-08)
+- Added `.project-catalog/` for documentation history
+- Agent work logs and handoff tracking
+- Session summaries for LLM switching
+- Decision logging with rationale
+- Auto-update checking
+
+## v4.0.0 (2025-01-08)
+- Initial release
+- Self-contained install.sh
+- ORCHESTRATOR.md with coordination rules
+- PROJECT_STATE.json for status tracking
+- .agents/ for specialist definitions
+- .templates/ for blueprints
