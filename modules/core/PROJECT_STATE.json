@@ -1,0 +1,37 @@
+{
+  "goal": "",
+  "phase": "initialized",
+  "todos": [],
+  "in_progress": [],
+  "completed": [],
+  "blockers": [],
+  "agent_registry": [],
+  "checkpoints": [],
+  "archived_phases": [],
+  "circuit_breaker": {
+    "triggered": false,
+    "reason": null,
+    "timestamp": null
+  },
+  "context_health": {
+    "estimated_usage": "low",
+    "last_archive": null
+  },
+  "auto_checkpoint": {
+    "enabled": true,
+    "trigger_on": {
+      "todos_completed": 3,
+      "phase_complete": true,
+      "session_end": true,
+      "before_risky_operation": true
+    },
+    "last_auto_checkpoint": null,
+    "todos_since_checkpoint": 0
+  },
+  "current_session": {
+    "started": "",
+    "llm": "",
+    "actions": []
+  },
+  "notes": "Project initialized. Awaiting goal definition."
+}

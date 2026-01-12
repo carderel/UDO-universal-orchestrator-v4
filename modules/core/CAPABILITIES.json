@@ -1,0 +1,31 @@
+{
+  "_description": "Defines what the current LLM/environment can do. Update when switching environments.",
+  
+  "environment": "unknown",
+  "llm_model": "unknown",
+  
+  "tools_available": {
+    "file_read": true,
+    "file_write": true,
+    "file_execute": false,
+    "python_sandbox": false,
+    "javascript_sandbox": false,
+    "web_search": false,
+    "web_browse": false,
+    "image_generation": false,
+    "image_analysis": true,
+    "code_execution": false,
+    "shell_access": false,
+    "api_calls": false
+  },
+  
+  "constraints": {
+    "max_output_tokens": 4096,
+    "max_context_tokens": 128000,
+    "supports_artifacts": false,
+    "supports_file_upload": true,
+    "supports_file_download": true
+  },
+  
+  "notes": "Update this file when switching LLMs or environments."
+}

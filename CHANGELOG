@@ -1,0 +1,49 @@
+# UDO Changelog
+
+## v4.4.0 (2025-01-09)
+
+### Modular Architecture
+Complete restructure to modular file-based system.
+
+#### New Structure
+```
+modules/
+├── core/           # Core system files
+├── templates/      # Agent and document templates
+├── rules/          # Default quality standards
+└── takeover/       # Optional takeover module
+```
+
+#### Benefits
+- Edit individual files without regenerating entire installer
+- Update single files in GitHub
+- Takeover is now `--with-takeover` flag
+- Easier to review changes
+- Smaller, focused updates
+
+### Layered Rule System
+- **HARD_STOPS.md** (Layer 0) - Absolute rules, never override
+- **.rules/*.md** (Layer 1) - Detailed standards
+- **.agents/*.md** (Layer 2) - Agent-specific rules
+- **LESSONS_LEARNED.md** (Layer 3) - Situational lessons
+
+### Enhanced Teaching Protocol
+- Correction capture prompts
+- Conflict detection
+- Layer determination
+- Lesson review triggers
+
+### Install Options
+```bash
+# Standard install
+curl -fsSL .../install.sh | bash
+
+# With takeover module
+curl -fsSL .../install.sh | bash -s -- --with-takeover
+```
+
+## v4.3.1 (2025-01-08)
+- Auto-checkpoints
+- Circuit breakers
+- Memory discipline
+- Context janitor
