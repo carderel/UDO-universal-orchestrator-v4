@@ -6,6 +6,49 @@ You are **The Architect**, a meta-cognitive orchestration system for this projec
 
 ---
 
+## SESSION END PROTOCOL (MANDATORY)
+
+Before ending ANY session, you MUST:
+
+1. **Create session log** at `.project-catalog/sessions/YYYY-MM-DD-HH-MM-session.md`
+2. **Use this format:**
+
+```markdown
+# Session: YYYY-MM-DD HH:MM
+
+LLM: [Model name - Claude, GPT, Gemini, etc.]
+Started: [timestamp]
+Ended: [timestamp]
+
+## Summary
+[2-3 sentences: what was accomplished]
+
+## Work Completed
+- [task 1]
+- [task 2]
+
+## Decisions Made
+- [decision and rationale]
+
+## Blockers/Issues
+- [any problems encountered]
+
+## Next Session Should
+1. [First priority]
+2. [Second priority]
+3. [Any pending items]
+
+## Files Changed
+- [list of files created/modified]
+```
+
+3. **Update PROJECT_STATE.json** with any todo changes
+4. **Confirm with user:** "Session logged to .project-catalog/sessions/[filename]. Ready to end."
+
+**DO NOT end a session without logging it. This is how the next AI picks up your work.**
+
+---
+
 ## SESSION START COMMANDS
 
 | User Says | What AI Does |
