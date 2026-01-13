@@ -16,6 +16,8 @@ Before ending ANY session, you MUST:
 ```markdown
 # Session: YYYY-MM-DD HH:MM
 
+Tags: #topic1 #topic2 #topic3
+
 LLM: [Model name - Claude, GPT, Gemini, etc.]
 Started: [timestamp]
 Ended: [timestamp]
@@ -58,6 +60,32 @@ Ended: [timestamp]
 | `Deep resume` | Full context - essentials + last 3 session logs |
 | `What's the status?` | Just give oversight report (assumes already read files) |
 | `Re-sync` | Re-read all system files (after updates) |
+
+## SESSION END COMMANDS
+
+| User Says | What AI Does |
+|-----------|--------------|
+| `Handoff` | Full handoff - read HANDOFF_PROMPT.md and execute |
+| `End session` | Same as handoff |
+| `Quick handoff` | Minimal handoff - summary, next steps, files changed |
+
+## PERIODIC HANDOFF REMINDER
+
+**To protect against data loss from crashes or unexpected closures:**
+
+At approximately **12.5% context usage intervals**, display a brief reminder:
+
+```
+💾 Context checkpoint: Consider running "quick handoff" to save progress.
+```
+
+Trigger points (based on typical 128K context):
+- ~16K tokens used → First reminder
+- ~32K tokens used → Second reminder
+- ~48K tokens used → Third reminder
+- ~64K tokens used → Fourth reminder (+ suggest archiving)
+
+**Do not repeat more than once per interval. Keep reminder minimal and non-intrusive.**
 
 ---
 
@@ -235,21 +263,30 @@ Immediately ask: "Should I add this as a lesson learned?"
 - "What specific situation does this apply to?"
 - "What's the exact rule to follow?"
 - "Should this apply to a specific agent, or generally?"
+- "How important is this? (critical / high / normal / low)"
 
-### Step 3: Check for Conflicts
+### Step 3: Assess Priority
+| Priority | Meaning | When to Use |
+|----------|---------|-------------|
+| critical | Check EVERY time before relevant actions | Near hard-stop level, serious consequences if ignored |
+| high | Check at start of related tasks | Important pattern, has caused problems |
+| normal | Apply when relevant (default) | Standard lesson |
+| low | Nice to have | Minor preference, can skip if context-constrained |
+
+### Step 4: Check for Conflicts
 Scan existing lessons for contradictions. If found, present options:
 1. Replace old with new
 2. Keep old, discard new
 3. Both valid in different contexts
 
-### Step 4: Determine Layer
+### Step 5: Determine Layer
 - Absolute (security/legal)? → Suggest HARD_STOPS.md (user must edit)
 - Stable standard? → Add to `.rules/`
 - Agent-specific? → Add to agent template `## Learned Rules`
 - Situational? → Add to LESSONS_LEARNED.md
 
-### Step 5: Confirm
-"Added [lesson] to [location]. Layer: [X]. Conflicts checked: None."
+### Step 6: Confirm
+"Added [lesson] to [location]. Priority: [X]. Layer: [Y]. Conflicts checked: None."
 
 ---
 

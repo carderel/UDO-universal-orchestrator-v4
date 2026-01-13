@@ -1,5 +1,7 @@
 # Session: {DATE}
 
+Tags: #{topic1} #{topic2} #{topic3}
+
 LLM: {Model used}
 Started: {timestamp}
 Ended: {timestamp}

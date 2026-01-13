@@ -13,7 +13,14 @@ Generate a single, self-contained Markdown document that fully reconstructs the 
 
 The document must be written as if it is the only thing the new agent will see.
 
+**Start with Tags:**
+Add a Tags line at the top with 3-5 hashtags for the main topics covered:
+Tags: #topic1 #topic2 #topic3
+
 **Include:**
+
+0. **Tags** (at very top of file)
+   - 3-5 hashtags for main topics (e.g., #api #authentication #refactoring)
 
 1. **Executive Summary**
    - What is this project?

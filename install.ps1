@@ -3,13 +3,16 @@
 # PowerShell version for Windows
 
 param(
-    [switch]$WithTakeover,
+    [switch]$NoTakeover,
     [switch]$ForceUpdate
 )
 
 $ErrorActionPreference = "Stop"
 $REPO_URL = "https://raw.githubusercontent.com/carderel/UDO-universal-orchestrator-v4/main"
 $CURRENT_VERSION = "4.4.0"
+
+# Takeover is included by default
+$WithTakeover = -not $NoTakeover
 
 Write-Host "🔧 UDO - Universal Dynamic Orchestrator v$CURRENT_VERSION" -ForegroundColor Cyan
 Write-Host "==========================================="
@@ -159,6 +162,7 @@ Download-File "modules/core/HARD_STOPS.md" "HARD_STOPS.md"
 Download-File "modules/core/NON_GOALS.md" "NON_GOALS.md"
 Download-File "modules/core/OVERSIGHT_DASHBOARD.md" "OVERSIGHT_DASHBOARD.md"
 Download-File "modules/core/HANDOFF_PROMPT.md" "HANDOFF_PROMPT.md"
+Download-File "modules/core/COMMANDS.md" "COMMANDS.md"
 
 # Preserve user data files
 Download-IfMissing "modules/core/PROJECT_STATE.json" "PROJECT_STATE.json"
@@ -209,6 +213,7 @@ foreach ($path in $gitkeepPaths) {
 # Download support files
 Download-File "modules/core/memory-README.md" ".memory\README.md"
 Download-File "modules/core/catalog-README.md" ".project-catalog\README.md"
+Download-File "modules/core/sessions-README.md" ".project-catalog\sessions\README.md"
 Download-File "modules/core/inputs-manifest.json" ".inputs\manifest.json"
 
 # Takeover module (optional)

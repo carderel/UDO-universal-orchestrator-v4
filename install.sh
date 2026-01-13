@@ -13,14 +13,14 @@ echo "==========================================="
 echo ""
 
 # Parse arguments
-WITH_TAKEOVER=false
+WITH_TAKEOVER=true
 FORCE_UPDATE=false
 UPDATE_MODE=false
 
 for arg in "$@"; do
     case $arg in
-        --with-takeover)
-            WITH_TAKEOVER=true
+        --no-takeover)
+            WITH_TAKEOVER=false
             ;;
         --force-update)
             FORCE_UPDATE=true
@@ -142,6 +142,7 @@ download_file "modules/core/HARD_STOPS.md" "HARD_STOPS.md"
 download_file "modules/core/NON_GOALS.md" "NON_GOALS.md"
 download_file "modules/core/OVERSIGHT_DASHBOARD.md" "OVERSIGHT_DASHBOARD.md"
 download_file "modules/core/HANDOFF_PROMPT.md" "HANDOFF_PROMPT.md"
+download_file "modules/core/COMMANDS.md" "COMMANDS.md"
 
 # Preserve user data files
 download_if_missing "modules/core/PROJECT_STATE.json" "PROJECT_STATE.json"
@@ -184,6 +185,7 @@ touch .memory/disposable/.gitkeep
 # Download memory README
 download_file "modules/core/memory-README.md" ".memory/README.md"
 download_file "modules/core/catalog-README.md" ".project-catalog/README.md"
+download_file "modules/core/sessions-README.md" ".project-catalog/sessions/README.md"
 download_file "modules/core/inputs-manifest.json" ".inputs/manifest.json"
 
 # Takeover module (optional)

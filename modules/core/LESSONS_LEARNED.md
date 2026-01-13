@@ -45,12 +45,19 @@ This file captures recent/situational lessons. It's **Layer 3** of the rule hier
 <!-- Add lessons below. Format:
 
 ### L001: [Short Title]
+- **Priority**: [critical | high | normal | low]
 - **Date**: YYYY-MM-DD
 - **Scope**: [cross-cutting | project-specific | temporary]
 - **Context**: When does this apply?
 - **Rule**: What to do
 - **Anti-pattern**: What NOT to do
 - **Expires**: [date | never | review-quarterly]
+
+Priority Guide:
+- critical: Check EVERY time before relevant actions (almost hard-stop level)
+- high: Important, check at start of related tasks
+- normal: Apply when relevant (default)
+- low: Nice to have, can be skipped if context-constrained
 
 -->
 

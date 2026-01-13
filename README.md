@@ -4,22 +4,61 @@
 
 Switch between Claude, GPT, Gemini, or any AI mid-project without losing context.
 
-## Quick Install
+---
 
-**Mac/Linux/WSL:**
+## Installation
+
+Navigate to your project folder first, then run one of the following:
+
+### Mac / Linux / WSL (Bash)
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/carderel/UDO-universal-orchestrator-v4/main/install.sh | bash
 ```
 
-**Windows PowerShell:**
+### Mac / Linux (Zsh)
+
+```zsh
+curl -fsSL https://raw.githubusercontent.com/carderel/UDO-universal-orchestrator-v4/main/install.sh | zsh
+```
+
+### Windows PowerShell
+
 ```powershell
 irm https://raw.githubusercontent.com/carderel/UDO-universal-orchestrator-v4/main/install.ps1 | iex
 ```
 
-**With Takeover Module** (for inheriting existing projects):
-```bash
-curl -fsSL https://raw.githubusercontent.com/carderel/UDO-universal-orchestrator-v4/main/install.sh | bash -s -- --with-takeover
+### Windows Command Prompt (cmd)
+
+```cmd
+curl -fsSL https://raw.githubusercontent.com/carderel/UDO-universal-orchestrator-v4/main/install.sh -o install.sh && bash install.sh
 ```
+
+Or if you have PowerShell available:
+
+```cmd
+powershell -Command "irm https://raw.githubusercontent.com/carderel/UDO-universal-orchestrator-v4/main/install.ps1 | iex"
+```
+
+### Git Bash (Windows)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/carderel/UDO-universal-orchestrator-v4/main/install.sh | bash
+```
+
+### Without Takeover Module
+
+If you don't need project takeover capabilities:
+
+```bash
+# Mac/Linux/WSL
+curl -fsSL https://raw.githubusercontent.com/carderel/UDO-universal-orchestrator-v4/main/install.sh | bash -s -- --no-takeover
+
+# Windows PowerShell
+powershell -File install.ps1 -NoTakeover
+```
+
+---
 
 ## Rule Hierarchy
 
@@ -36,15 +75,18 @@ curl -fsSL https://raw.githubusercontent.com/carderel/UDO-universal-orchestrator
 your-project/
 ├── START_HERE.md                # Quick onboarding
 ├── ORCHESTRATOR.md              # Operating instructions
+├── COMMANDS.md                  # Command reference
+├── HANDOFF_PROMPT.md            # Session handoff prompts
 ├── HARD_STOPS.md                # Absolute rules (Layer 0)
 ├── PROJECT_STATE.json           # Current status
 ├── LESSONS_LEARNED.md           # Situational lessons (Layer 3)
 │
 ├── .agents/                     # Specialists (Layer 2)
 ├── .rules/                      # Standards (Layer 1)
+├── .takeover/                   # Takeover module
 ├── .inputs/                     # User files
 ├── .outputs/                    # Deliverables
-├── .project-catalog/            # Full history
+├── .project-catalog/            # Full history + session logs
 ├── .checkpoints/                # Snapshots
 └── .memory/                     # Working/canonical/disposable
 ```
@@ -53,23 +95,33 @@ your-project/
 
 ### Start New Project
 ```
-Tell your AI: "Read START_HERE.md and begin"
+"Read START_HERE.md and begin"
 ```
 
 ### Resume Project
 ```
-"Resume this project"
+"Resume"          # Quick resume
+"Deep resume"     # Full context with recent sessions
+```
+
+### End Session
+```
+"Handoff"         # Full context handoff
+"Quick handoff"   # Minimal handoff
 ```
 
 ### Check Status
 ```
-"Give me an oversight report"
+"What's the status?"
 ```
 
 ### Takeover Existing Project
 ```
 "Read .takeover/TAKEOVER_ORCHESTRATOR.md and start takeover"
 ```
+
+### All Commands
+See `COMMANDS.md` for the complete command reference.
 
 ## Repository Structure
 
