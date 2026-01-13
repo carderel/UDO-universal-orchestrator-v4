@@ -28,6 +28,17 @@ Welcome to this project. Follow these steps to get oriented:
 
 If the user just says `Resume` or `Resume this project` - follow the Quick Resume Protocol in ORCHESTRATOR.md.
 
+## Ending Sessions
+
+**CRITICAL**: Before ending any session, use the handoff prompt in `HANDOFF_PROMPT.md`
+
+Quick version:
+```
+End session. Create handoff at .project-catalog/sessions/
+```
+
+This creates the context file the next AI needs to continue your work.
+
 ## Key Folders
 
 | Folder | Purpose |

@@ -70,11 +70,18 @@ if [ -f ".udo-version" ]; then
             FORCE_UPDATE=true
         else
             echo "Skipping update."
-            exit 0
+            if [ "$WITH_TAKEOVER" = false ]; then
+                exit 0
+            fi
         fi
     else
         echo "✅ You're on the latest version."
-        exit 0
+        # Check if takeover requested but missing
+        if [ "$WITH_TAKEOVER" = true ] && [ ! -d ".takeover" ]; then
+            echo "📥 Adding takeover module..."
+        elif [ "$WITH_TAKEOVER" = false ]; then
+            exit 0
+        fi
     fi
 fi
 
@@ -134,6 +141,7 @@ download_file "modules/core/ORCHESTRATOR.md" "ORCHESTRATOR.md"
 download_file "modules/core/HARD_STOPS.md" "HARD_STOPS.md"
 download_file "modules/core/NON_GOALS.md" "NON_GOALS.md"
 download_file "modules/core/OVERSIGHT_DASHBOARD.md" "OVERSIGHT_DASHBOARD.md"
+download_file "modules/core/HANDOFF_PROMPT.md" "HANDOFF_PROMPT.md"
 
 # Preserve user data files
 download_if_missing "modules/core/PROJECT_STATE.json" "PROJECT_STATE.json"

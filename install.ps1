@@ -61,11 +61,18 @@ if (Test-Path ".udo-version") {
                 $ForceUpdate = $true
             } else {
                 Write-Host "Skipping update."
-                exit 0
+                if (-not $WithTakeover) {
+                    exit 0
+                }
             }
         } else {
             Write-Host "✅ You're on the latest version." -ForegroundColor Green
-            exit 0
+            # Check if takeover requested but missing
+            if ($WithTakeover -and -not (Test-Path ".takeover")) {
+                Write-Host "📥 Adding takeover module..." -ForegroundColor Yellow
+            } elseif (-not $WithTakeover) {
+                exit 0
+            }
         }
     } catch {
         Write-Host "Could not check for updates."
@@ -151,6 +158,7 @@ Download-File "modules/core/ORCHESTRATOR.md" "ORCHESTRATOR.md"
 Download-File "modules/core/HARD_STOPS.md" "HARD_STOPS.md"
 Download-File "modules/core/NON_GOALS.md" "NON_GOALS.md"
 Download-File "modules/core/OVERSIGHT_DASHBOARD.md" "OVERSIGHT_DASHBOARD.md"
+Download-File "modules/core/HANDOFF_PROMPT.md" "HANDOFF_PROMPT.md"
 
 # Preserve user data files
 Download-IfMissing "modules/core/PROJECT_STATE.json" "PROJECT_STATE.json"
